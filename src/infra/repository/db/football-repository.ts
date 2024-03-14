@@ -17,8 +17,11 @@ export class FootballPostgresRepository {
       const queryResponse = await client.query(matchText, matchValues)
       const matcheId = queryResponse.rows[0].id
       const participantOneText = 'INSERT INTO football(matche_id, team_name, win) VALUES($1, $2, $3) RETURNING *'
-      const participantOneValues = [matcheId, footballOdds.participant2.name, footballOdds.participant2.win]
+      const participantOneValues = [matcheId, footballOdds.participant1.name, footballOdds.participant1.win]
       await client.query(participantOneText, participantOneValues)
+      const participantTwoText = 'INSERT INTO football(matche_id, team_name, win) VALUES($1, $2, $3) RETURNING *'
+      const participantTwoValues = [matcheId, footballOdds.participant2.name, footballOdds.participant2.win]
+      await client.query(participantTwoText, participantTwoValues)
       return matcheId
     } catch (error) {
       console.log(error)

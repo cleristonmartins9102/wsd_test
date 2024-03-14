@@ -1,7 +1,10 @@
-### Test for WSD
+## Test for WSD
 
-## Install Dependencies
+### Requirement
+* Must to connect a database
+
+### Install Dependencies
 * npm i
 
-## Running
+### Running
 * npm run start
